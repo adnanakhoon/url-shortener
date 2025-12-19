@@ -15,7 +15,7 @@ app.use(express.json());
 // app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: 'https://resilient-narwhal-e61a43.netlify.app/',
     credentials: true,
 }));
 app.use("/api/",shortUrl)
