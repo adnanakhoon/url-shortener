@@ -14,12 +14,15 @@ const port = process.env.PORT || 5001;
 app.use(express.json());
 // app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: true, // 👈 FIXES trailing slash & Netlify issues
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://resilient-narwhal-e61a43.netlify.app",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+// ✅ Explicit preflight support
+app.options("*", cors());
 
 app.use("/api/",shortUrl)
 
